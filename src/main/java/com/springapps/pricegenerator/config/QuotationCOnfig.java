@@ -25,6 +25,7 @@ public class QuotationCOnfig {
     // Programați metoda pentru a rula la intervale regulate (de exemplu, la fiecare oră)
     @Scheduled(cron = "0 0 * * * *")
     public void deleteExpiredEntities() {
+
         quotationRepository.deleteAllByExpireDateBefore(LocalDateTime.now());
     }
 }

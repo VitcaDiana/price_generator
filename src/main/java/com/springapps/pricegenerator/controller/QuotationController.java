@@ -3,6 +3,7 @@ package com.springapps.pricegenerator.controller;
 import com.springapps.pricegenerator.model.Quotation;
 import com.springapps.pricegenerator.service.QuotationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,8 @@ public class QuotationController {
     }
 
     @PostMapping("/{productId}/{userId}")
-    public Quotation generateQuotation (@PathVariable Long productId, @PathVariable Long userId){
+    public ResponseEntity<Quotation> generateQuotation (@PathVariable Long productId, @PathVariable Long userId){
+        return ResponseEntity.ok(quotationService.generateQuotation(productId,userId));
 
     }
 }
